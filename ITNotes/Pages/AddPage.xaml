@@ -5,7 +5,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Image Source="{Binding Note.Photo}" x:Name="img" HeightRequest="300"/>
-            <Button Text="Добавить" Clicked="AddPhoto"/>
+            <Button Text="Загрузить фото" Clicked="LoadPhoto"/>
+            <Button Text="Сделать фото" Clicked="CapturePhoto"/>
             <Entry Text="{Binding Note.Text}"/>
             <Button Text="Сохранить" Clicked="Save"/>
         </StackLayout>

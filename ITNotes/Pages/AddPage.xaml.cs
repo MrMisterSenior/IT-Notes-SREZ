@@ -14,11 +14,8 @@ namespace ITNotes.Pages
         {
             InitializeComponent();
         }
-        private async void AddPhoto(object sender, EventArgs e)
+        private async void AddPhoto(FileResult photo)
         {
-            FileResult photo = await MediaPicker.PickPhotoAsync();
-            //FileResult photo = await MediaPicker.CapturePhotoAsync();
-
             img.Source = ImageSource.FromFile(photo.FullPath);
 
             byte[] imageArray = null;
@@ -37,6 +34,16 @@ namespace ITNotes.Pages
         {
             App.db.AddNote(Note);
             Navigation.PopAsync();
+        }
+        private async void LoadPhoto(object sender, EventArgs e)
+        {
+            FileResult photo = await MediaPicker.PickPhotoAsync();
+            AddPhoto(photo);
+        }
+        private async void CapturePhoto(object sender, EventArgs e)
+        {
+            FileResult photo = await MediaPicker.CapturePhotoAsync();
+            AddPhoto(photo);
         }
     }
 }
